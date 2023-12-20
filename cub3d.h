@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/19 18:29:01 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/20 11:48:26 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_point
 
 typedef struct s_player
 {
+    double angle;
     t_point position;
     t_point pixel_coord;
 }   t_player;
@@ -76,9 +77,14 @@ int count_line(char **map);
 //mlx
 
 void open_window(t_mlx *mlx);
+void draw_cell(t_mlx *mlx,int x,int y);
+void draw_cell_bis(t_mlx *mlx,int x,int y);
+void draw_character(t_mlx *mlx);
+void delete_character(t_mlx *mlx);
 
 //event
 
 void event(mlx_key_data_t event,void *content);
+void loop(void *param);
 
 #endif

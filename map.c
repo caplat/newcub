@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:23:37 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/19 18:30:19 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/20 11:50:31 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,9 @@ void find_pos(char **map,t_player *player)
                 player->pixel_coord.x = (j * cellsize) + 32;
                 player->pixel_coord.y = (i * cellsize) + 32;
             }
-            // if(map[i][j] == 'N')
-            //     player->angle = M_PI;
-            // if(map[i][j] == 'E')
-            //     player->angle = M_PI / 2;
-            // if(map[i][j] == 'W')
-            //     player->angle = (3 * M_PI) / 2;
-            // if(map[i][j] == 'S')
-            //     player->angle = 0;
             j++;
         }
         i++;
         j = 0;
     }
-    // player->pdx = cosf(player->angle);
-    // player->pdy = sinf(player->angle);
-    // printf("player.x %f\nplayer.y %f\nplayer angle %f\n",player->position.x,player->position.y,player->angle);
 }
