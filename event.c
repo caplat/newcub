@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/28 13:31:32 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 22:19:45 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,20 @@ static void rotate(t_mlx *mlx)
 {
     if(mlx_is_key_down(mlx->id, MLX_KEY_LEFT))
     {
-        mlx->player->angle += (5 * M_PI) / 180;
+        delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+        mlx->player->angle -= (5 * M_PI) / 180;
         if(mlx->player->angle > 2 * M_PI)
             mlx->player->angle -= 2 * M_PI;
     }
     if(mlx_is_key_down(mlx->id, MLX_KEY_RIGHT))
     {
-        mlx->player->angle -= (5 * M_PI) / 180;
+        delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+        mlx->player->angle += (5 * M_PI) / 180;
         if(mlx->player->angle < 0)
             mlx->player->angle += 2 * M_PI;
     }
-    mlx->player->pdx = cosf(mlx->player->angle);
-    mlx->player->pdy = sinf(mlx->player->angle);
+    // mlx->player->pdx = cosf(mlx->player->angle);
+    // mlx->player->pdy = sinf(mlx->player->angle);
 }
 
 void event(mlx_key_data_t event,void *content)

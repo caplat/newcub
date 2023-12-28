@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/28 14:07:23 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 23:26:17 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define cellsize 64
+# define rayon 1000
 
 typedef struct s_map
 {
@@ -40,11 +41,21 @@ typedef struct s_point
 typedef struct s_player
 {
     double angle;
-    double pdx;
-    double pdy;
+    // double pdx;
+    // double pdy;
     t_point position;
     t_point pixel_coord;
 }   t_player;
+
+typedef struct s_ray
+{
+    int x2;
+    int y2;
+    int dx;
+    int dy;
+    int dir_x;
+    int dir_y;
+}   t_ray;
 
 typedef struct s_mlx
 {
@@ -53,6 +64,7 @@ typedef struct s_mlx
     mlx_image_t *img_ray;
     t_player *player;
     t_map *cub;
+    t_ray raycast;
 }   t_mlx;
 
 //init

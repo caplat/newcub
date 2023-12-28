@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:52:54 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/20 12:00:48 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 22:22:22 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static void find_angle(t_mlx *mlx)
         while(mlx->cub->map[i][j])
         {
             if(mlx->cub->map[i][j] == 'N')
-                mlx->player->angle = M_PI / 2;
+                mlx->player->angle = M_PI / 2 + M_PI;
             if(mlx->cub->map[i][j] == 'S')
-                mlx->player->angle = (3 * M_PI) / 2;
+                mlx->player->angle = (3 * M_PI) / 2 + M_PI;
             if(mlx->cub->map[i][j] == 'E')
-                mlx->player->angle = 0;
+                mlx->player->angle = M_PI + M_PI;
             if(mlx->cub->map[i][j] == 'W')
-                mlx->player->angle = M_PI;
+                mlx->player->angle = 0 + M_PI;
             j++;
         }
         i++;
