@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/20 12:14:40 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:31:32 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,38 @@ static void draw_map(t_mlx *mlx)
 static void update_pos_player(t_mlx *mlx)
 {
     draw_character(mlx);
+    draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
     if(mlx_is_key_down(mlx->id, MLX_KEY_S))
     {
         delete_character(mlx);
+        delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         mlx->player->pixel_coord.y += 5;
         draw_character(mlx);
+        draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
     }
     if(mlx_is_key_down(mlx->id, MLX_KEY_W))
     {
         delete_character(mlx);
+        delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         mlx->player->pixel_coord.y -= 5;
         draw_character(mlx);
+        draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
     }
     if(mlx_is_key_down(mlx->id, MLX_KEY_D))
     {
         delete_character(mlx);
+        delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         mlx->player->pixel_coord.x += 5;
         draw_character(mlx);
+        draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
     }
     if(mlx_is_key_down(mlx->id, MLX_KEY_A))
     {
         delete_character(mlx);
+        delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         mlx->player->pixel_coord.x -= 5;
         draw_character(mlx);
+        draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
     }
 }
 
@@ -70,7 +79,14 @@ static void rotate(t_mlx *mlx)
         if(mlx->player->angle > 2 * M_PI)
             mlx->player->angle -= 2 * M_PI;
     }
-    
+    if(mlx_is_key_down(mlx->id, MLX_KEY_RIGHT))
+    {
+        mlx->player->angle -= (5 * M_PI) / 180;
+        if(mlx->player->angle < 0)
+            mlx->player->angle += 2 * M_PI;
+    }
+    mlx->player->pdx = cosf(mlx->player->angle);
+    mlx->player->pdy = sinf(mlx->player->angle);
 }
 
 void event(mlx_key_data_t event,void *content)
@@ -81,12 +97,13 @@ void event(mlx_key_data_t event,void *content)
     mlx = content;
     if(mlx_is_key_down(mlx->id, MLX_KEY_ESCAPE))
         mlx_close_window(mlx->id);
-    if(mlx_is_key_down(mlx->id, MLX_KEY_RIGHT))
-    {
-        mlx->player->angle -= (5 * M_PI) / 180;
-        if(mlx->player->angle < 0)
-            mlx->player->angle += 2 * M_PI;
-    }
+    rotate(mlx);
+    // if(mlx_is_key_down(mlx->id, MLX_KEY_RIGHT))
+    // {
+    //     mlx->player->angle -= (5 * M_PI) / 180;
+    //     if(mlx->player->angle < 0)
+    //         mlx->player->angle += 2 * M_PI;
+    // }
 }
 
 void loop(void *param)

@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:30:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/19 18:11:15 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 11:18:27 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void print_arr(char **arr)
     while(arr[++i])
         printf("%s\n",arr[i]);
 }
-
 
 int count_line(char **map)
 {
@@ -43,4 +42,11 @@ void free_arr(char **map)
         i++;
     }
     free(map);
+}
+
+int absolute(int nb)
+{
+    if(nb < 0)
+        nb = -nb;
+    return(nb);
 }

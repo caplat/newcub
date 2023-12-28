@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/20 11:48:26 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 14:07:23 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_point
 typedef struct s_player
 {
     double angle;
+    double pdx;
+    double pdy;
     t_point position;
     t_point pixel_coord;
 }   t_player;
@@ -48,6 +50,7 @@ typedef struct s_mlx
 {
     mlx_t *id;
     mlx_image_t *img;
+    mlx_image_t *img_ray;
     t_player *player;
     t_map *cub;
 }   t_mlx;
@@ -73,6 +76,7 @@ void find_pos(char **map,t_player *player);
 void print_arr(char **arr);
 void free_arr(char **map);
 int count_line(char **map);
+int absolute(int nb);
 
 //mlx
 
@@ -86,5 +90,10 @@ void delete_character(t_mlx *mlx);
 
 void event(mlx_key_data_t event,void *content);
 void loop(void *param);
+
+//ray
+
+void draw_line(t_mlx *mlx, int x1, int y1);
+void delete_line(t_mlx *mlx, int x1, int y1);
 
 #endif

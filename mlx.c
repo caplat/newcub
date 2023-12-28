@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:15:22 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/20 11:22:07 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:24:42 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void open_window(t_mlx *mlx)
     if(!mlx->id)
         ft_puterror("problem with window");
     mlx->img = mlx_new_image(mlx->id,WIDTH,HEIGHT);
+    mlx->img_ray = mlx_new_image(mlx->id,WIDTH,HEIGHT);
     mlx_image_to_window(mlx->id,mlx->img,0,0);
+    mlx_image_to_window(mlx->id,mlx->img_ray,0,0);
     mlx_key_hook(mlx->id,event,mlx);
     success = mlx_loop_hook(mlx->id,loop,mlx);
     if(!success)
@@ -77,7 +79,7 @@ void draw_character(t_mlx *mlx)
     {
         while(y < 8)
         {
-            mlx_put_pixel(mlx->img,mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,0xFF0000FF);
+            mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,0xFF0000FF);
             y++;
         }
         x++;
@@ -96,7 +98,7 @@ void delete_character(t_mlx *mlx)
     {
         while(y < 8)
         {
-            mlx_put_pixel(mlx->img,mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,0x00000000);
+            mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,0x00000000);
             y++;
         }
         x++;

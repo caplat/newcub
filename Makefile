@@ -7,6 +7,7 @@ srcs/map.c \
 srcs/utils.c \
 srcs/mlx.c \
 srcs/event.c \
+srcs/ray.c \
 
 OBJS = ${SRCS:.c=.o}
 
