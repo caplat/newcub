@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/28 23:26:17 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/29 10:43:09 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void loop(void *param);
 
 //ray
 
+int is_wall(t_mlx *mlx, int x, int y);
 void draw_line(t_mlx *mlx, int x1, int y1);
 void delete_line(t_mlx *mlx, int x1, int y1);
 

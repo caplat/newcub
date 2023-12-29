@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/28 22:19:45 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/29 10:36:30 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ static void rotate(t_mlx *mlx)
         if(mlx->player->angle < 0)
             mlx->player->angle += 2 * M_PI;
     }
-    // mlx->player->pdx = cosf(mlx->player->angle);
-    // mlx->player->pdy = sinf(mlx->player->angle);
 }
 
 void event(mlx_key_data_t event,void *content)
@@ -100,12 +98,6 @@ void event(mlx_key_data_t event,void *content)
     if(mlx_is_key_down(mlx->id, MLX_KEY_ESCAPE))
         mlx_close_window(mlx->id);
     rotate(mlx);
-    // if(mlx_is_key_down(mlx->id, MLX_KEY_RIGHT))
-    // {
-    //     mlx->player->angle -= (5 * M_PI) / 180;
-    //     if(mlx->player->angle < 0)
-    //         mlx->player->angle += 2 * M_PI;
-    // }
 }
 
 void loop(void *param)
