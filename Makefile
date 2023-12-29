@@ -8,6 +8,8 @@ srcs/utils.c \
 srcs/mlx.c \
 srcs/event.c \
 srcs/ray.c \
+srcs/moveset.c \
+srcs/test.c \
 
 OBJS = ${SRCS:.c=.o}
 

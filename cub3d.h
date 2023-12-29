@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/29 10:43:09 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/29 16:24:32 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+    int x1;
+    int y1;
     int x2;
     int y2;
     int dx;
@@ -108,5 +110,19 @@ void loop(void *param);
 int is_wall(t_mlx *mlx, int x, int y);
 void draw_line(t_mlx *mlx, int x1, int y1);
 void delete_line(t_mlx *mlx, int x1, int y1);
+void init_ray(t_ray *ray, t_mlx *mlx, int x1, int y1);
+
+//moveset
+
+void move_down(t_mlx *mlx);
+void move_up(t_mlx *mlx);
+void move_right(t_mlx *mlx);
+void move_left(t_mlx *mlx);
+
+//test
+
+void test_init_ray(t_ray *ray, t_mlx *mlx, int x1, int y1,double angle);
+void test_draw_line(t_mlx *mlx, int x1, int y1,double angle);
+void test_draw_beam(t_mlx *mlx,int x1,int y1);
 
 #endif
