@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/29 16:29:58 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 09:49:17 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,25 @@ int is_wall(t_mlx *mlx, int x, int y)
     return 1;
 }
 
-void init_ray(t_ray *ray, t_mlx *mlx, int x1, int y1)
+static void init_ray(t_ray *ray, int x1, int y1,double angle)
 {   
     ray->x1 = x1;
     ray->y1 = y1;
-    ray->x2 = x1 + rayon * cos(mlx->player->angle);
-    ray->y2 = y1 + rayon * sin(mlx->player->angle);
+    ray->x2 = x1 + rayon * cos(angle);
+    ray->y2 = y1 + rayon * sin(angle);
     ray->dx = absolute(ray->x2 - x1);
     ray->dy = absolute(ray->y2 - y1);
     ray->dir_x = (x1 < ray->x2) ? 1 : -1;
     ray->dir_y = (y1 < ray->y2) ? 1 : -1;
 }
 
-void draw_line(t_mlx *mlx, int x1, int y1)
+static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
 {
     t_ray *ray = &(mlx->raycast);
     int err;
     int e2;
 
-    init_ray(ray,mlx,x1,y1);
+    init_ray(ray,x1,y1,angle);
     err = ray->dx - ray->dy;
     e2 = 2 * err;
     while(1)
@@ -62,13 +62,13 @@ void draw_line(t_mlx *mlx, int x1, int y1)
     }
 }
 
-void delete_line(t_mlx *mlx, int x1, int y1)
+static void delete_line(t_mlx *mlx, int x1, int y1,double angle)
 {
     t_ray *ray = &(mlx->raycast);
     int err;
     int e2;
 
-    init_ray(ray,mlx,x1,y1);
+    init_ray(ray,x1,y1,angle);
     err = ray->dx - ray->dy;
     e2 = 2 * err;
     while(1)
@@ -87,5 +87,33 @@ void delete_line(t_mlx *mlx, int x1, int y1)
             err += ray->dx;
             y1 += ray->dir_y;
         }
+    }
+}
+
+void draw_beam(t_mlx *mlx,int x1,int y1)
+{
+    int offset;
+    double angle;
+
+    offset = -30;
+    while(offset < 30)
+    {
+        angle = mlx->player->angle + offset * (M_PI / 180);
+        draw_line(mlx,x1,y1,angle);
+        offset++;
+    }
+}
+
+void delete_beam(t_mlx *mlx,int x1,int y1)
+{
+    int offset;
+    double angle;
+
+    offset = -30;
+    while(offset < 30)
+    {
+        angle = mlx->player->angle + offset * (M_PI / 180);
+        delete_line(mlx,x1,y1,angle);
+        offset++;
     }
 }

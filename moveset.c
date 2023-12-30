@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:31:10 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/29 14:35:12 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 09:43:50 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void move_down(t_mlx *mlx)
         if(!is_wall(mlx,mlx->player->pixel_coord.x,mlx->player->pixel_coord.y + 5))
         {
             delete_character(mlx);
-            delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
             mlx->player->pixel_coord.y += 5;
             draw_character(mlx);
-            draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         }
     }
 }
@@ -34,10 +34,10 @@ void move_up(t_mlx *mlx)
         if(!is_wall(mlx,mlx->player->pixel_coord.x,mlx->player->pixel_coord.y - 5))
         {
             delete_character(mlx);
-            delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
             mlx->player->pixel_coord.y -= 5;
             draw_character(mlx);
-            draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         }
     }
 }
@@ -49,10 +49,10 @@ void move_right(t_mlx *mlx)
         if(!is_wall(mlx,mlx->player->pixel_coord.x + 5,mlx->player->pixel_coord.y))
         {
             delete_character(mlx);
-            delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
             mlx->player->pixel_coord.x += 5;
             draw_character(mlx);
-            draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         }
     }
 }
@@ -64,10 +64,10 @@ void move_left(t_mlx *mlx)
         if(!is_wall(mlx,mlx->player->pixel_coord.x - 5,mlx->player->pixel_coord.y))
         {
             delete_character(mlx);
-            delete_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
             mlx->player->pixel_coord.x -= 5;
             draw_character(mlx);
-            draw_line(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
         }
     }
 }
