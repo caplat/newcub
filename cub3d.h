@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/30 11:15:17 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 16:33:13 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define cellsize 64
+# define cellsize 32
 # define rayon 1000
 # define BLACK100 0x000000FF
 # define BLACK025 0x00000040 
@@ -30,6 +30,7 @@
 # define WHITE025 0xFFFFFF40
 # define R100 0xFF0000FF
 # define R025 0xFF000040
+# define G025 0x00FF0040
 
 typedef struct s_map
 {
@@ -63,17 +64,21 @@ typedef struct s_ray
     int dy;
     int dir_x;
     int dir_y;
+    int dist_ray;
 }   t_ray;
 
 typedef struct s_mlx
 {
     mlx_t *id;
-    mlx_t *screen;
     mlx_image_t *img;
     mlx_image_t *img_ray;
+    mlx_image_t *screen;
     t_player *player;
     t_map *cub;
     t_ray raycast;
+    int nb_rays;
+    int dist_player_screen;
+    int wall_height;
 }   t_mlx;
 
 //init
@@ -124,6 +129,10 @@ void move_down(t_mlx *mlx);
 void move_up(t_mlx *mlx);
 void move_right(t_mlx *mlx);
 void move_left(t_mlx *mlx);
+
+//screen
+
+void draw_screen_column(t_mlx *mlx);
 
 //test
 

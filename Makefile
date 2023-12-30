@@ -10,6 +10,7 @@ srcs/event.c \
 srcs/ray.c \
 srcs/moveset.c \
 srcs/test.c \
+srcs/screen.c \
 
 OBJS = ${SRCS:.c=.o}
 

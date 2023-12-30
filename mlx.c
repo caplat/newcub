@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:15:22 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/30 11:19:49 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 12:17:24 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void open_window(t_mlx *mlx)
         ft_puterror("problem with window");
     mlx->img = mlx_new_image(mlx->id,WIDTH,HEIGHT);
     mlx->img_ray = mlx_new_image(mlx->id,WIDTH,HEIGHT);
+    mlx->screen = mlx_new_image(mlx->id,WIDTH,HEIGHT);
     mlx_image_to_window(mlx->id,mlx->img,0,0);
     mlx_image_to_window(mlx->id,mlx->img_ray,0,0);
+    mlx_image_to_window(mlx->id,mlx->screen,0,0);
     mlx_key_hook(mlx->id,event,mlx);
     success = mlx_loop_hook(mlx->id,loop,mlx);
     if(!success)
