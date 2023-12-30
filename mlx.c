@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:15:22 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/30 08:31:02 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 11:19:49 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void draw_cell(t_mlx *mlx,int x,int y)
     {
         while(j < cellsize - 1)
         {
-            mlx_put_pixel(mlx->img,x + j,y + i, 0x000000FF);
+            mlx_put_pixel(mlx->img,x + j,y + i, BLACK025);
             j++;
         }
         i++;
@@ -61,7 +61,7 @@ void draw_cell_bis(t_mlx *mlx,int x,int y)
     {
         while(j < cellsize - 1)
         {
-            mlx_put_pixel(mlx->img,x + j,y + i, 0xFFFFFFFF);
+            mlx_put_pixel(mlx->img,x + j,y + i, WHITE025);
             j++;
         }
         i++;
@@ -73,17 +73,17 @@ void draw_character(t_mlx *mlx)
     int x;
     int y;
 
-    x = -8;
-    y = -8;
-    while(x < 8)
+    x = -(cellsize / 8);
+    y = -(cellsize / 8);
+    while(x < (cellsize / 8))
     {
-        while(y < 8)
+        while(y < (cellsize / 8))
         {
-            mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,0xFF0000FF);
+            mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,R025);
             y++;
         }
         x++;
-        y = -8;
+        y = -(cellsize / 8);
     }
 }
 
@@ -92,16 +92,16 @@ void delete_character(t_mlx *mlx)
     int x;
     int y;
 
-    x = -8;
-    y = -8;
-    while(x < 8)
+    x = -(cellsize / 8);
+    y = -(cellsize / 8);
+    while(x < (cellsize / 8))
     {
-        while(y < 8)
+        while(y < (cellsize / 8))
         {
             mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,0x00000000);
             y++;
         }
         x++;
-        y = -8;
+        y = -(cellsize / 8);
     }
 }

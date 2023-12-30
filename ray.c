@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/30 09:49:17 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 11:21:53 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
     e2 = 2 * err;
     while(1)
     {
-        mlx_put_pixel(mlx->img_ray, x1, y1, 0xFF0000FF);
+        mlx_put_pixel(mlx->img_ray, x1, y1, R025);
         if((x1 == ray->x2 && y1 == ray->y2) || is_wall(mlx,x1,y1))
             break;
         e2 = 2 * err;

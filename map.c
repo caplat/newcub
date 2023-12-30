@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:23:37 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/20 11:50:31 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 10:14:42 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void find_pos(char **map,t_player *player)
             {
                 player->position.x = j;
                 player->position.y = i;
-                player->pixel_coord.x = (j * cellsize) + 32;
-                player->pixel_coord.y = (i * cellsize) + 32;
+                player->pixel_coord.x = (j * cellsize) + (cellsize / 2);
+                player->pixel_coord.y = (i * cellsize) + (cellsize / 2);
             }
             j++;
         }

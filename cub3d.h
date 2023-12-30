@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/30 09:46:42 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/30 11:15:17 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define HEIGHT 1080
 # define cellsize 64
 # define rayon 1000
+# define BLACK100 0x000000FF
+# define BLACK025 0x00000040 
+# define WHITE100 0xFFFFFFFF
+# define WHITE025 0xFFFFFF40
+# define R100 0xFF0000FF
+# define R025 0xFF000040
 
 typedef struct s_map
 {
@@ -62,6 +68,7 @@ typedef struct s_ray
 typedef struct s_mlx
 {
     mlx_t *id;
+    mlx_t *screen;
     mlx_image_t *img;
     mlx_image_t *img_ray;
     t_player *player;
