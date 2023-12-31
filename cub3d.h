@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/30 16:33:13 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/31 12:10:36 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define cellsize 32
+# define cellsize 64
 # define rayon 1000
 # define BLACK100 0x000000FF
 # define BLACK025 0x00000040 
@@ -132,7 +132,7 @@ void move_left(t_mlx *mlx);
 
 //screen
 
-void draw_screen_column(t_mlx *mlx);
+void draw_screen(t_mlx *mlx);
 
 //test
 
