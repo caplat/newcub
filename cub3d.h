@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/31 12:10:36 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/01 13:31:36 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define cellsize 64
+# define fov 60
 # define rayon 1000
 # define BLACK100 0x000000FF
 # define BLACK025 0x00000040 
@@ -65,6 +66,7 @@ typedef struct s_ray
     int dir_x;
     int dir_y;
     int dist_ray;
+    int dist_player_screen;
 }   t_ray;
 
 typedef struct s_mlx
@@ -76,9 +78,9 @@ typedef struct s_mlx
     t_player *player;
     t_map *cub;
     t_ray raycast;
-    int nb_rays;
-    int dist_player_screen;
-    int wall_height;
+    // int nb_rays;
+    // int dist_player_screen;
+    // int wall_height;
 }   t_mlx;
 
 //init
