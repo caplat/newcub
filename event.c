@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/01 11:17:12 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:33:33 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void loop(void *param)
     mlx = param;
     draw_map(mlx);
     update_pos_player(mlx);
-    // draw_screen(mlx);
+    draw_screen(mlx);
 }

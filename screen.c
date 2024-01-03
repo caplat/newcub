@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 12:23:31 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/01 13:27:11 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:34:39 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 void draw_screen(t_mlx *mlx)
 {
-    int column;
+    int x;
+    int y;
 
-    column = WIDTH / fov;
+    x = 0;
+    y = 0;
+    while(x < WIDTH)
+    {
+        while(y < HEIGHT)
+        {
+            mlx_put_pixel(mlx->screen,x,y,G025);
+            y++;
+        }
+        x++;
+    }
 }

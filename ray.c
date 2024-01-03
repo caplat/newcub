@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/01 13:34:37 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:25:38 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
     {
         mlx_put_pixel(mlx->img_ray, x1, y1, R025);
         ray->dist_ray += sqrt(pow(ray->dir_x,2) + pow(ray->dir_y,2));
+        // printf("%d\n",ray->dist_ray);
         if((x1 == ray->x2 && y1 == ray->y2) || is_wall(mlx,x1,y1))
             break;
         e2 = 2 * err;
@@ -96,8 +97,9 @@ static void delete_line(t_mlx *mlx, int x1, int y1,double angle)
 void draw_beam(t_mlx *mlx,int x1,int y1)
 {
     double angle;
-
-    ray->dist_player_screen = (WIDTH / 2) / tan(fov / 2);
+    t_ray *ray = &(mlx->raycast);
+    
+    ray->dist_player_screen = (WIDTH / 2) / tan((fov * (M_PI / 180)) / 2);
     angle = mlx->player->angle - ((fov / 2) * (M_PI / 180));
     while(angle < mlx->player->angle + ((fov / 2) * (M_PI / 180)))
     {
