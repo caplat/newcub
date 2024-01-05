@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:15:22 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 12:34:51 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 17:26:10 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void open_window(t_mlx *mlx)
     mlx->id = mlx_init(WIDTH,HEIGHT,"CUBE",true);
     if(!mlx->id)
         ft_puterror("problem with window");
+    mlx->screen = mlx_new_image(mlx->id,WIDTH,HEIGHT);
     mlx->img = mlx_new_image(mlx->id,WIDTH,HEIGHT);
     mlx->img_ray = mlx_new_image(mlx->id,WIDTH,HEIGHT);
-    mlx->screen = mlx_new_image(mlx->id,WIDTH,HEIGHT);
+    mlx_image_to_window(mlx->id,mlx->screen,0,0);
     mlx_image_to_window(mlx->id,mlx->img,0,0);
     mlx_image_to_window(mlx->id,mlx->img_ray,0,0);
-    mlx_image_to_window(mlx->id,mlx->screen,0,0);
     mlx_key_hook(mlx->id,event,mlx);
     success = mlx_loop_hook(mlx->id,loop,mlx);
     if(!success)
