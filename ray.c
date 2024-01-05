@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/03 14:25:38 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:16:31 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
     while(1)
     {
         mlx_put_pixel(mlx->img_ray, x1, y1, R025);
-        ray->dist_ray += sqrt(pow(ray->dir_x,2) + pow(ray->dir_y,2));
-        // printf("%d\n",ray->dist_ray);
+        // ray->dist_ray += sqrt(pow(ray->dir_x,2) + pow(ray->dir_y,2));
         if((x1 == ray->x2 && y1 == ray->y2) || is_wall(mlx,x1,y1))
             break;
         e2 = 2 * err;
@@ -63,6 +62,7 @@ static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
             y1 += ray->dir_y;
         }
     }
+    printf("%d\n",ray->dist_ray);
     // mlx->wall_height = (mlx->dist_player_screen / ray->dist_ray) * HEIGHT;
 }
 
@@ -97,11 +97,13 @@ static void delete_line(t_mlx *mlx, int x1, int y1,double angle)
 void draw_beam(t_mlx *mlx,int x1,int y1)
 {
     double angle;
-    t_ray *ray = &(mlx->raycast);
+    // static int x;
+    // t_ray *ray = &(mlx->raycast);
     
-    ray->dist_player_screen = (WIDTH / 2) / tan((fov * (M_PI / 180)) / 2);
+    // x = 0;
+    // ray->dist_player_screen = (WIDTH / 2) / tan((fov * (M_PI / 180)) / 2);
     angle = mlx->player->angle - ((fov / 2) * (M_PI / 180));
-    while(angle < mlx->player->angle + ((fov / 2) * (M_PI / 180)))
+    while(angle <= mlx->player->angle + ((fov / 2) * (M_PI / 180)))
     {
         draw_line(mlx,x1,y1,angle);
         angle += (M_PI / 180);
@@ -113,7 +115,7 @@ void delete_beam(t_mlx *mlx,int x1,int y1)
     double angle;
 
     angle = mlx->player->angle - ((fov / 2) * (M_PI / 180));
-    while(angle < mlx->player->angle + ((fov / 2) * (M_PI / 180)))
+    while(angle <= mlx->player->angle + ((fov / 2) * (M_PI / 180)))
     {
         delete_line(mlx,x1,y1,angle);
         angle += (M_PI / 180);

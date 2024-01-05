@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/03 13:22:59 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 13:57:01 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define cellsize 64
-# define fov 60
+# define fov 0
 # define rayon 1000
 # define BLACK100 0x000000FF
 # define BLACK025 0x00000040 
@@ -116,6 +116,7 @@ void delete_character(t_mlx *mlx);
 
 //event
 
+void draw_map(t_mlx *mlx);
 void event(mlx_key_data_t event,void *content);
 void loop(void *param);
 
