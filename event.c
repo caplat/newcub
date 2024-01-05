@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 16:31:29 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 17:10:14 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void rotate(t_mlx *mlx)
     if(mlx_is_key_down(mlx->id, MLX_KEY_LEFT))
     {
         delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+        delete_screen(mlx);
         mlx->player->angle -= (5 * M_PI) / 180;
         if(mlx->player->angle > 2 * M_PI)
             mlx->player->angle -= 2 * M_PI;
@@ -55,6 +56,7 @@ static void rotate(t_mlx *mlx)
     if(mlx_is_key_down(mlx->id, MLX_KEY_RIGHT))
     {
         delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+        delete_screen(mlx);
         mlx->player->angle += (5 * M_PI) / 180;
         if(mlx->player->angle < 0)
             mlx->player->angle += 2 * M_PI;
@@ -77,8 +79,8 @@ void loop(void *param)
     t_mlx *mlx;
 
     mlx = param;
+    // print_nb_arr(mlx->tab);
     draw_map(mlx);
     update_pos_player(mlx);
-    print_nb_arr(mlx->tab);
     draw_screen(mlx);
 }

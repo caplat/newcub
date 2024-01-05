@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:31:10 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 12:23:19 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 16:40:58 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void move_down(t_mlx *mlx)
         {
             delete_character(mlx);
             delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_screen(mlx);
             mlx->player->pixel_coord.y += 5;
             draw_character(mlx);
             draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_screen(mlx);
         }
     }
 }
@@ -35,9 +37,11 @@ void move_up(t_mlx *mlx)
         {
             delete_character(mlx);
             delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_screen(mlx);
             mlx->player->pixel_coord.y -= 5;
             draw_character(mlx);
             draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_screen(mlx);
         }
     }
 }
@@ -50,9 +54,11 @@ void move_right(t_mlx *mlx)
         {
             delete_character(mlx);
             delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_screen(mlx);
             mlx->player->pixel_coord.x += 5;
             draw_character(mlx);
             draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_screen(mlx);
         }
     }
 }
@@ -65,9 +71,11 @@ void move_left(t_mlx *mlx)
         {
             delete_character(mlx);
             delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_screen(mlx);
             mlx->player->pixel_coord.x -= 5;
             draw_character(mlx);
             draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_screen(mlx);
         }
     }
 }

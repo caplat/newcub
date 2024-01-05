@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 16:30:47 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 16:54:00 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
             y1 += ray->dir_y;
         }
     }
-    printf("%d\n",ray->dist_ray);
+    // printf("%d\n",ray->dist_ray);
     // mlx->wall_height = (mlx->dist_player_screen / ray->dist_ray) * HEIGHT;
 }
 
