@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:52:54 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 12:22:23 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 16:29:32 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int main(int argc,char **argv)
     init(&cub, &player);
     mlx.cub = &cub;
     mlx.player = &player;
+    mlx.tab = malloc(sizeof(int) * (WIDTH));
     check_args(argc);
     check_file_extension(argv[1]);
     cub.map = read_map(argv[1]);
@@ -82,6 +83,7 @@ int main(int argc,char **argv)
     print_arr(cub.map);
     open_window(&mlx);
     free_arr(cub.map);
+    // free_tab(mlx.tab,fov);
     return(0);
 }
 

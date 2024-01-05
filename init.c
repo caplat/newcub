@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:55:03 by acaplat           #+#    #+#             */
-/*   Updated: 2023/12/19 17:57:55 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/05 15:34:54 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void init(t_map *cub, t_player *player)
     player->position.y = 0;
     player->pixel_coord.x = 0;
     player->pixel_coord.y = 0;
-
 }
