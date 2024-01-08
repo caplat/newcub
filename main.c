@@ -6,13 +6,13 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:52:54 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 12:08:14 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:19:12 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void find_dim(char **map,t_map *cub)
+static void find_dim(char **map,t_cub *cub)
 {
     int i;
     int j;
@@ -62,7 +62,7 @@ static void find_angle(t_mlx *mlx)
 int main(int argc,char **argv)
 {
     t_mlx mlx;
-    t_map cub;
+    t_cub cub;
     t_player player;
 
     init(&cub, &player);
@@ -81,8 +81,10 @@ int main(int argc,char **argv)
     find_dim(cub.map, &cub);
     printf("\nverticale : %d\nhorizontale : %d\n",cub.verticale,cub.horizontale);
     print_arr(cub.map);
+    check_wall(cub.map,&cub);
+    flood_fill(cub.map,cub.horizontale,cub.verticale);
     open_window(&mlx);
     free_arr(cub.map);
-    // free_tab(mlx.tab,fov);
+    free(mlx.tab);
     return(0);
 }

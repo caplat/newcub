@@ -6,13 +6,13 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:55:03 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 12:15:07 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:06:07 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void init(t_map *cub, t_player *player)
+void init(t_cub *cub, t_player *player)
 {
     cub->map = NULL;
     cub->horizontale = 0;

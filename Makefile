@@ -11,6 +11,8 @@ srcs/ray.c \
 srcs/moveset.c \
 srcs/test.c \
 srcs/screen.c \
+srcs/flood_fill.c \
+srcs/wall.c \
 
 OBJS = ${SRCS:.c=.o}
 

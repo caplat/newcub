@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 13:01:08 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:05:24 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@
 # define R025 0xFF000040
 # define G025 0x00FF0040
 
-typedef struct s_map
+typedef struct s_cub
 {
     char **map;
     int horizontale;
     int verticale;
-}   t_map;
+}   t_cub;
 
 typedef struct s_point
 {
@@ -77,7 +77,7 @@ typedef struct s_mlx
     mlx_image_t *img_ray;
     mlx_image_t *screen;
     t_player *player;
-    t_map *cub;
+    t_cub *cub;
     t_ray raycast;
     int *tab;
     // int nb_rays;
@@ -87,7 +87,7 @@ typedef struct s_mlx
 
 //init
 
-void init(t_map *cub,t_player *player);
+void init(t_cub *cub,t_player *player);
 
 //check
 
@@ -109,6 +109,7 @@ int count_line(char **map);
 int absolute(int nb);
 void print_nb_arr(int *tab);
 void free_tab(int *tab,int count);
+char ** map_cpy(char **map,int verticale);
 
 //mlx
 
@@ -141,6 +142,15 @@ void move_backward(t_mlx *mlx);
 
 void draw_screen(t_mlx *mlx);
 void delete_screen(t_mlx *mlx);
+
+//wall
+
+void check_wall(char **map,t_cub *cub);
+
+//flood_fill
+
+void flood_fill(char **map,int horizontale,int verticale);
+void fill_bis(char **map,t_point cur,t_cub *cub);
 
 //test
 
