@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:19:26 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 12:15:29 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:42:29 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void check_args(char argc)
         ft_puterror("Put only 2 arguments!");
 }
 
-static int	ft_strstr(char *str, char *to_find)
+int	ft_strstr(char *str, char *to_find)
 {
 	int	i;
 

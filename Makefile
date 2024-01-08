@@ -13,6 +13,11 @@ srcs/test.c \
 srcs/screen.c \
 srcs/flood_fill.c \
 srcs/wall.c \
+map_damla.c \
+check_map.c \
+check_map_utils.c \
+wall_damla.c \
+utils_damla.c \
 
 OBJS = ${SRCS:.c=.o}
 

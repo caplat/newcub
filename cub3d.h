@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 15:05:24 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 16:25:39 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,27 @@
 typedef struct s_cub
 {
     char **map;
+    char *floor_color;
+    char *ceilling_color;
     int horizontale;
-    int verticale;
+    int verticale;  
+    int floor[3];
+    int ceilling[3];
+    char *pathNorth;
+    char *pathSouth;
+    char *pathEast;
+    char *pathWest;
+    mlx_texture_t *north_tex;
+    mlx_texture_t *south_tex;
+    mlx_texture_t *east_tex;
+    mlx_texture_t *west_tex;
+    mlx_image_t *minimap;
+    mlx_image_t *bigmap;
+    mlx_image_t		*west_image;
+	mlx_image_t		*east_image;
+	mlx_image_t		*north_image;
+	mlx_image_t		*south_image;
+    
 }   t_cub;
 
 typedef struct s_point
@@ -94,6 +113,7 @@ void init(t_cub *cub,t_player *player);
 void check_args(char argc);
 void	check_file_extension(char *file);
 int	ft_open_fd(char *filename);
+int	ft_strstr(char *str, char *to_find);
 
 //map
 
@@ -151,6 +171,17 @@ void check_wall(char **map,t_cub *cub);
 
 void flood_fill(char **map,int horizontale,int verticale);
 void fill_bis(char **map,t_point cur,t_cub *cub);
+
+
+//damla
+
+int check_map_components(char **map);
+int invalid_char_check(char **map);
+void check_all_map(char *file,t_cub *cub);
+char	**get_map_description(char **map);
+void texture_check(char *line, int *count);
+void check_wall_damla(char **map);
+char	**ft_arrdup(char **arr);
 
 //test
 
