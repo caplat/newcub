@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 16:54:00 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:32:07 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,8 @@ void draw_beam(t_mlx *mlx,int x1,int y1)
 {
     double angle;
     static int compteur;
-    // static int x;
-    // t_ray *ray = &(mlx->raycast);
-    
-    // x = 0;
-    // ray->dist_player_screen = (WIDTH / 2) / tan((fov * (M_PI / 180)) / 2);
+
     compteur = 0;
-    // mlx->tab = malloc(sizeof(int) * (fov + 1));
     angle = mlx->player->angle - ((fov / 2) * (M_PI / 180));
     while(angle <= mlx->player->angle + ((fov / 2) * (M_PI / 180)))
     {

@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:52:54 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 16:29:32 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:08:14 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,3 @@ int main(int argc,char **argv)
     // free_tab(mlx.tab,fov);
     return(0);
 }
-

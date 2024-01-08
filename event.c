@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 17:10:14 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:51:23 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static void update_pos_player(t_mlx *mlx)
 {
     draw_character(mlx);
     draw_beam(mlx,mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
-    move_down(mlx);
-    move_up(mlx);
+    // move_down(mlx);
+    // move_up(mlx);
+    move_forward(mlx);
+    move_backward(mlx);
     move_right(mlx);
     move_left(mlx);
 }
@@ -84,3 +86,6 @@ void loop(void *param)
     update_pos_player(mlx);
     draw_screen(mlx);
 }
+
+
+

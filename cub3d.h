@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 17:07:42 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 13:01:08 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@
 # define fov 60
 # define rayon 1000
 # define BLACK100 0x000000FF
-# define BLACK025 0x00000040 
+# define BLACK050 0x000000870
+# define BLACK025 0x00000040
 # define WHITE100 0xFFFFFFFF
+# define WHITE050 0xFFFFFF80
 # define WHITE025 0xFFFFFF40
 # define R100 0xFF0000FF
+# define R050 0xFF000080
 # define R025 0xFF000040
 # define G025 0x00FF0040
 
@@ -49,8 +52,6 @@ typedef struct s_point
 typedef struct s_player
 {
     double angle;
-    // double pdx;
-    // double pdy;
     t_point position;
     t_point pixel_coord;
 }   t_player;
@@ -66,7 +67,7 @@ typedef struct s_ray
     int dir_x;
     int dir_y;
     int dist_ray;
-    int dist_player_screen;
+    // int dist_player_screen;
 }   t_ray;
 
 typedef struct s_mlx
@@ -131,10 +132,10 @@ void delete_beam(t_mlx *mlx,int x1,int y1);
 
 //moveset
 
-void move_down(t_mlx *mlx);
-void move_up(t_mlx *mlx);
 void move_right(t_mlx *mlx);
 void move_left(t_mlx *mlx);
+void move_forward(t_mlx *mlx);
+void move_backward(t_mlx *mlx);
 
 //screen
 

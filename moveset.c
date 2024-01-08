@@ -6,41 +6,55 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:31:10 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 16:40:58 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 13:00:55 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void move_down(t_mlx *mlx)
+void move_forward(t_mlx *mlx)
 {
-    if(mlx_is_key_down(mlx->id, MLX_KEY_S))
+    if (mlx_is_key_down(mlx->id, MLX_KEY_W))
     {
-        if(!is_wall(mlx,mlx->player->pixel_coord.x,mlx->player->pixel_coord.y + 5))
+        int distance = 5;
+        int delta_x = distance * cos(mlx->player->angle);
+        int delta_y = distance * sin(mlx->player->angle);
+
+        int new_x = mlx->player->pixel_coord.x + delta_x;
+        int new_y = mlx->player->pixel_coord.y + delta_y;
+        if (!is_wall(mlx, new_x, new_y))
         {
             delete_character(mlx);
-            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             delete_screen(mlx);
-            mlx->player->pixel_coord.y += 5;
+            mlx->player->pixel_coord.x = new_x;
+            mlx->player->pixel_coord.y = new_y;
             draw_character(mlx);
-            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             draw_screen(mlx);
         }
     }
 }
 
-void move_up(t_mlx *mlx)
+void move_backward(t_mlx *mlx)
 {
-    if(mlx_is_key_down(mlx->id, MLX_KEY_W))
+    if (mlx_is_key_down(mlx->id, MLX_KEY_S))
     {
-        if(!is_wall(mlx,mlx->player->pixel_coord.x,mlx->player->pixel_coord.y - 5))
+        int distance = 5;
+        int delta_x = -distance * cos(mlx->player->angle);
+        int delta_y = -distance * sin(mlx->player->angle);
+        int new_x = mlx->player->pixel_coord.x + delta_x;
+        int new_y = mlx->player->pixel_coord.y + delta_y;
+
+        if (!is_wall(mlx, new_x, new_y))
         {
             delete_character(mlx);
-            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             delete_screen(mlx);
-            mlx->player->pixel_coord.y -= 5;
+            mlx->player->pixel_coord.x = new_x;
+            mlx->player->pixel_coord.y = new_y;
             draw_character(mlx);
-            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             draw_screen(mlx);
         }
     }
@@ -48,16 +62,23 @@ void move_up(t_mlx *mlx)
 
 void move_right(t_mlx *mlx)
 {
-    if(mlx_is_key_down(mlx->id, MLX_KEY_D))
+    if (mlx_is_key_down(mlx->id, MLX_KEY_D))
     {
-        if(!is_wall(mlx,mlx->player->pixel_coord.x + 5,mlx->player->pixel_coord.y))
+        int distance = 5;
+        int delta_x = -distance * sin(mlx->player->angle);
+        int delta_y = distance * cos(mlx->player->angle);
+        int new_x = mlx->player->pixel_coord.x + delta_x;
+        int new_y = mlx->player->pixel_coord.y + delta_y;
+
+        if (!is_wall(mlx, new_x, new_y))
         {
             delete_character(mlx);
-            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             delete_screen(mlx);
-            mlx->player->pixel_coord.x += 5;
+            mlx->player->pixel_coord.x = new_x;
+            mlx->player->pixel_coord.y = new_y;
             draw_character(mlx);
-            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             draw_screen(mlx);
         }
     }
@@ -65,16 +86,23 @@ void move_right(t_mlx *mlx)
 
 void move_left(t_mlx *mlx)
 {
-    if(mlx_is_key_down(mlx->id, MLX_KEY_A))
+    if (mlx_is_key_down(mlx->id, MLX_KEY_A))
     {
-        if(!is_wall(mlx,mlx->player->pixel_coord.x - 5,mlx->player->pixel_coord.y))
+        int distance = 5;
+        int delta_x = distance * sin(mlx->player->angle);
+        int delta_y = -distance * cos(mlx->player->angle);
+        int new_x = mlx->player->pixel_coord.x + delta_x;
+        int new_y = mlx->player->pixel_coord.y + delta_y;
+
+        if (!is_wall(mlx, new_x, new_y))
         {
             delete_character(mlx);
-            delete_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            delete_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             delete_screen(mlx);
-            mlx->player->pixel_coord.x -= 5;
+            mlx->player->pixel_coord.x = new_x;
+            mlx->player->pixel_coord.y = new_y;
             draw_character(mlx);
-            draw_beam(mlx, mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
+            draw_beam(mlx, mlx->player->pixel_coord.x, mlx->player->pixel_coord.y);
             draw_screen(mlx);
         }
     }

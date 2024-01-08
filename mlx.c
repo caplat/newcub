@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:15:22 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/05 17:26:10 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:28:20 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void draw_cell(t_mlx *mlx,int x,int y)
     {
         while(j < cellsize - 1)
         {
-            mlx_put_pixel(mlx->img,x + j,y + i, BLACK025);
+            mlx_put_pixel(mlx->img,x + j,y + i, BLACK050);
             j++;
         }
         i++;
@@ -63,7 +63,7 @@ void draw_cell_bis(t_mlx *mlx,int x,int y)
     {
         while(j < cellsize - 1)
         {
-            mlx_put_pixel(mlx->img,x + j,y + i, WHITE025);
+            mlx_put_pixel(mlx->img,x + j,y + i, WHITE050);
             j++;
         }
         i++;
@@ -81,7 +81,7 @@ void draw_character(t_mlx *mlx)
     {
         while(y < (cellsize / 8))
         {
-            mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,R025);
+            mlx_put_pixel(mlx->img, mlx->player->pixel_coord.x + x,mlx->player->pixel_coord.y + y,R050);
             y++;
         }
         x++;
