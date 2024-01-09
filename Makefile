@@ -1,23 +1,26 @@
 NAME = cub3D
 
 SRCS = srcs/main.c \
-srcs/init.c \
-srcs/check.c \
-srcs/map.c \
-srcs/utils.c \
-srcs/mlx.c \
-srcs/event.c \
-srcs/ray.c \
-srcs/moveset.c \
-srcs/test.c \
-srcs/screen.c \
-srcs/flood_fill.c \
-srcs/wall.c \
-map_damla.c \
-check_map.c \
-check_map_utils.c \
-wall_damla.c \
-utils_damla.c \
+	srcs/parsing/check.c \
+	srcs/parsing/map.c \
+	srcs/parsing/wall.c \
+	srcs/parsing/check_map.c \
+	srcs/parsing/texture.c \
+	srcs/parsing/check_map_utils.c \
+	srcs/parsing/color.c \
+	srcs/init.c \
+	srcs/utils.c \
+	srcs/flood_fill.c \
+	srcs/mlx.c  \
+	srcs/free.c  \
+	srcs/event.c \
+	srcs/ray.c \
+	srcs/utils2.c \
+	srcs/color_conversion.c\
+	srcs/screen.c \
+	srcs/moveset.c \
+	srcs/load_texture.c \
+		
 
 OBJS = ${SRCS:.c=.o}
 
@@ -32,13 +35,13 @@ LIB = ./libft/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C ./libft
-	$(CC) $(OBJS) $(MLX) $(LIB) -o $(NAME)
+		@$(MAKE) -C ./libft
+		$(CC) $(OBJS) $(MLX) $(LIB) -o $(NAME)
 
 
 debug: $(OBJS)
-	@make -C ./libft
-	$(CC) -fsanitize=address $(OBJS) $(LIB) $(MLX) -o $(NAME)
+		@make -C ./libft
+		$(CC) -fsanitize=address $(OBJS) $(LIB) $(MLX) -o $(NAME)
 
 clean:
 	$(RM) $(LIB) $(OBJS)

@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 18:18:50 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 12:51:23 by acaplat          ###   ########.fr       */
+/*   Created: 2023/12/11 12:59:11 by derblang          #+#    #+#             */
+/*   Updated: 2024/01/09 16:12:18 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../cub3d.h"
 
@@ -24,7 +25,7 @@ void draw_map(t_mlx *mlx)
             if(mlx->cub->map[y][x] == '1')
                 draw_cell(mlx,x * cellsize,y * cellsize);
             if(mlx->cub->map[y][x] == '0' || mlx->cub->map[y][x] == 'N' || mlx->cub->map[y][x] == 'S' 
-                || mlx->cub->map[y][x] == 'E' || mlx->cub->map[y][x] == 'W')
+                || mlx->cub->map[y][x] == 'E' || mlx->cub->map[y][x] == 'W' || mlx->cub->map[y][x] == ' ')
                 draw_cell_bis(mlx,x * cellsize,y * cellsize);
             x++;
         }
@@ -37,8 +38,6 @@ static void update_pos_player(t_mlx *mlx)
 {
     draw_character(mlx);
     draw_beam(mlx,mlx->player->pixel_coord.x,mlx->player->pixel_coord.y);
-    // move_down(mlx);
-    // move_up(mlx);
     move_forward(mlx);
     move_backward(mlx);
     move_right(mlx);
@@ -86,6 +85,3 @@ void loop(void *param)
     update_pos_player(mlx);
     draw_screen(mlx);
 }
-
-
-

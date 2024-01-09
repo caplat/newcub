@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 17:23:37 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 13:32:59 by acaplat          ###   ########.fr       */
+/*   Created: 2023/11/16 11:27:28 by derblang          #+#    #+#             */
+/*   Updated: 2024/01/09 15:40:34 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
+
 
 static char *read_file_lines(int fd) 
 {
@@ -34,7 +35,6 @@ static char *read_file_lines(int fd)
     }
     return buf;
 }
-
 char **read_map(char *file)
 {
     int fd;
@@ -50,41 +50,6 @@ char **read_map(char *file)
     return (arr);
 }
 
-static int ft_count(char **map,int i,int j)
-{
-    static int k;
-
-    if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-        k++;
-    return(k);
-}
-
-void check_map(char **map)
-{
-    int i;
-    int j;
-    int k;
-
-    i = 0;
-    j = 0;
-    while(map[i])
-    {
-        while(map[i][j])
-        {
-            k = ft_count(map,i,j);
-            if(map[i][j] != '1' && map[i][j] != '0' &&
-                map[i][j] != 'N' && map[i][j] != 'S' &&
-                map[i][j] != 'E' && map[i][j] != 'W' &&
-                map[i][j] != ' ')
-                printf("Error\nParsing incorrect %c\n",map[i][j]);
-            j++;
-        }
-        i++;
-        j = 0;
-    }
-    if(k != 1)
-        ft_puterror("Problem with count number");
-}
 
 void find_pos(char **map,t_player *player)
 {
@@ -102,8 +67,8 @@ void find_pos(char **map,t_player *player)
             {
                 player->position.x = j;
                 player->position.y = i;
-                player->pixel_coord.x = (j * cellsize) + cellsize / 2;
-                player->pixel_coord.y = (i * cellsize) + cellsize / 2;
+                player->pixel_coord.x = (j * cellsize) + 32;
+                player->pixel_coord.y = (i * cellsize) + 32;
             }
             j++;
         }
@@ -111,3 +76,35 @@ void find_pos(char **map,t_player *player)
         j = 0;
     }
 }
+
+
+
+void check_all_map(char *file, t_cub *cub)
+{
+    char **map;
+    
+    map = read_map(file);
+    if(map == NULL)
+    {
+        ft_puterror("Error reading the map\n");
+    }
+    cub->map = get_map_description(map);
+    if(cub->map == NULL)
+    {
+        free_arr(map);
+        ft_puterror("Error\nInvalid map texture\n");
+    }
+    if(check_map_components(cub->map) == -1)
+    {
+        free_arr(map);
+      
+        ft_puterror("Error\nInvalid map!\n");
+    }
+     check_map_color(map, cub);  
+     check_map_texture(map, cub);
+}
+
+
+
+
+

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:29:43 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/08 15:41:38 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/18 13:46:41 by derblang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 void texture_check(char *line, int *count)
 {

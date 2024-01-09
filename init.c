@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 16:55:03 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 15:59:06 by acaplat          ###   ########.fr       */
+/*   Created: 2023/11/17 12:43:08 by derblang          #+#    #+#             */
+/*   Updated: 2024/01/04 12:42:35 by derblang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void init(t_cub *cub, t_player *player)
     cub->west_tex = NULL;
     cub->east_tex = NULL;
 }
-

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 17:52:54 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 16:45:06 by acaplat          ###   ########.fr       */
+/*   Created: 2023/11/16 10:50:31 by derblang          #+#    #+#             */
+/*   Updated: 2024/01/09 16:04:27 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,29 +59,27 @@ static void find_angle(t_mlx *mlx)
     }
 }
 
-int main(int argc,char **argv)
+int main(int argc, char **argv)
 {
     t_mlx mlx;
-    t_cub cub;
     t_player player;
-
+    t_cub cub;
+    
     init(&cub, &player);
     mlx.cub = &cub;
     mlx.player = &player;
     mlx.tab = malloc(sizeof(int) * (WIDTH));
     check_args(argc);
-    check_file_extension(argv[1]);
+	check_file_extension(argv[1]);
     check_all_map(argv[1], &cub);
-    if(cub.map == NULL)
-    {
+     if(cub.map == NULL)
+     {
         ft_puterror("Error\nMap cant be read!\n");
         free_arr(cub.map);
-    }
-    if(cub.map != NULL)
-        print_arr(cub.map);
-    // cub.map = read_map(argv[1]);
-    // check_map(cub.map);
-    find_pos(cub.map,&player);
+     }
+    //  if(cub.map != NULL)
+    //     print_arr(cub.map);
+    find_pos(cub.map, &player);
     printf("posx : %d\nposy : %d\n",mlx.player->position.x,mlx.player->position.y);
     printf("pixcoord.x : %d\npixcoord.y : %d\n",player.pixel_coord.x,player.pixel_coord.y);
     find_angle(&mlx);
@@ -89,10 +87,10 @@ int main(int argc,char **argv)
     find_dim(cub.map, &cub);
     printf("\nverticale : %d\nhorizontale : %d\n",cub.verticale,cub.horizontale);
     print_arr(cub.map);
-    // check_wall(cub.map,&cub);
-    // flood_fill(cub.map,cub.horizontale,cub.verticale);
-    // open_window(&mlx);
+    flood_fill(cub.map,cub.horizontale,cub.verticale);
+    // printf("\n");
+    open_window(&mlx);
     free_arr(cub.map);
     free(mlx.tab);
-    return(0);
-}
+    return 0;
+ }

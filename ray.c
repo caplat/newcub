@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 10:14:55 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 12:32:07 by acaplat          ###   ########.fr       */
+/*   Created: 2023/12/19 10:14:09 by derblang          #+#    #+#             */
+/*   Updated: 2024/01/09 16:27:04 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void draw_beam(t_mlx *mlx,int x1,int y1)
     while(angle <= mlx->player->angle + ((fov / 2) * (M_PI / 180)))
     {
         draw_line(mlx,x1,y1,angle);
-        mlx->tab[compteur] = mlx->raycast.dist_ray;
+        mlx->tab[compteur] = mlx->raycast.dist_ray * cos(abs_double(mlx->player->angle - angle));
         compteur++;
         angle += (fov * (M_PI / 180)/ WIDTH);
     }

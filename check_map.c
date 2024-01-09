@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:21:49 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/08 15:41:10 by acaplat          ###   ########.fr       */
+/*   Updated: 2023/12/18 13:46:46 by derblang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
 
 static void invalid_char(char c, size_t *count)
 {
@@ -59,10 +59,11 @@ static int nb_of_player(char **map)
     }
     return 0;
 }
+
 int check_map_components(char **map)
 {
     if(nb_of_player(map) == -1 || invalid_char_check(map) == -1)
         return -1;
-    check_wall_damla(map);
+    check_wall(map);
     return 0;
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 16:24:02 by acaplat           #+#    #+#             */
-/*   Updated: 2024/01/08 16:25:39 by acaplat          ###   ########.fr       */
+/*   Created: 2023/11/16 10:47:47 by derblang          #+#    #+#             */
+/*   Updated: 2024/01/09 16:32:06 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "libft/libft.h"
 #include <math.h>
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define cellsize 32
+# define M_PI 3.14159265358979323846
+# define cellsize 16
 # define fov 60
 # define rayon 1000
 # define BLACK100 0x000000FF
-# define BLACK050 0x000000870
-# define BLACK025 0x00000040
+# define BLACK025 0x00000040 
 # define WHITE100 0xFFFFFFFF
-# define WHITE050 0xFFFFFF80
 # define WHITE025 0xFFFFFF40
 # define R100 0xFF0000FF
-# define R050 0xFF000080
 # define R025 0xFF000040
 # define G025 0x00FF0040
+# define T00 0x00FFFFFF
 
 typedef struct s_cub
 {
@@ -53,14 +53,7 @@ typedef struct s_cub
     mlx_texture_t *south_tex;
     mlx_texture_t *east_tex;
     mlx_texture_t *west_tex;
-    mlx_image_t *minimap;
-    mlx_image_t *bigmap;
-    mlx_image_t		*west_image;
-	mlx_image_t		*east_image;
-	mlx_image_t		*north_image;
-	mlx_image_t		*south_image;
-    
-}   t_cub;
+} t_cub;
 
 typedef struct s_point
 {
@@ -68,12 +61,20 @@ typedef struct s_point
     int y;
 }   t_point;
 
+typedef struct s_float
+{
+    float x;
+    float y;
+} t_float;
+
+
 typedef struct s_player
 {
     double angle;
     t_point position;
     t_point pixel_coord;
 }   t_player;
+
 
 typedef struct s_ray
 {
@@ -99,91 +100,105 @@ typedef struct s_mlx
     t_cub *cub;
     t_ray raycast;
     int *tab;
-    // int nb_rays;
-    // int dist_player_screen;
-    // int wall_height;
 }   t_mlx;
 
+
+
 //init
-
-void init(t_cub *cub,t_player *player);
-
-//check
-
-void check_args(char argc);
-void	check_file_extension(char *file);
-int	ft_open_fd(char *filename);
-int	ft_strstr(char *str, char *to_find);
+void init(t_cub *cub, t_player *player);
 
 //map
-
 char **read_map(char *file);
-void check_map(char **map);
 void find_pos(char **map,t_player *player);
+void check_all_map(char *file, t_cub *cub);
 
-//utils
 
-void print_arr(char **arr);
-void free_arr(char **map);
-int count_line(char **map);
-int absolute(int nb);
-void print_nb_arr(int *tab);
-void free_tab(int *tab,int count);
-char ** map_cpy(char **map,int verticale);
+//flood fill
+
+void flood_fill(char **map,int horizontale,int verticale);
+void fill_bis(char **map,t_point cur,t_cub *cub);
+
+
+//free
+void free_cub(t_cub *cub);
+void free_only_cub(t_cub *cub);
+
+//check
+int check_map_extension(char *str, t_cub *cub);
+void check_args(char argc);
+int	ft_open_fd(char *filename);
+void	check_file_extension(char *file);
+
+
+//check_map_utils
+void texture_check(char *line, int *count);
+char	**get_map_description(char **map);
+
+
+//check_map
+int invalid_char_check(char **map);
+int check_map_components(char **map);
+
+//wall
+int	check_closed_around_space(char **map);
+void check_wall(char **map);
+
+//color 
+void check_color_arr(char **arr);
+void	convert_rgb(char *line, t_cub *cub, char c);
+void get_color(char *line, t_cub *cub);
+void check_color(t_cub *cub);
+void parse_floor(t_cub *cub);
+int color_range(t_cub *cub);
+
 
 //mlx
-
-void open_window(t_mlx *mlx);
-void draw_cell(t_mlx *mlx,int x,int y);
 void draw_cell_bis(t_mlx *mlx,int x,int y);
 void draw_character(t_mlx *mlx);
 void delete_character(t_mlx *mlx);
+void draw_cell(t_mlx *mlx,int x,int y);
+void open_window(t_mlx *mlx);
+
 
 //event
-
-void draw_map(t_mlx *mlx);
-void event(mlx_key_data_t event,void *content);
+void event(mlx_key_data_t keycode,void *content);
 void loop(void *param);
 
-//ray
 
-int is_wall(t_mlx *mlx, int x, int y);
-void draw_beam(t_mlx *mlx,int x1,int y1);
+//utils
+void print_arr(char **arr);
+int ft_arrlen(char **map);
+void free_arr(char **map);
+int count_line(char **map);
+int absolute(int nb);
+
+//texture
+void check_map_texture(char **map, t_cub *cub);
+void check_map_color(char **map, t_cub *cub);
+
+//utils2
+char ** map_cpy(char **map,int verticale);
+char	**ft_arrdup(char **arr);
+double abs_double(double nb);
+
+//ray
 void delete_beam(t_mlx *mlx,int x1,int y1);
+void draw_beam(t_mlx *mlx,int x1,int y1);
+int is_wall(t_mlx *mlx, int x, int y);
 
 //moveset
-
-void move_right(t_mlx *mlx);
 void move_left(t_mlx *mlx);
 void move_forward(t_mlx *mlx);
 void move_backward(t_mlx *mlx);
+void move_right(t_mlx *mlx);
 
 //screen
 
 void draw_screen(t_mlx *mlx);
 void delete_screen(t_mlx *mlx);
 
-//wall
-
-void check_wall(char **map,t_cub *cub);
-
-//flood_fill
-
-void flood_fill(char **map,int horizontale,int verticale);
-void fill_bis(char **map,t_point cur,t_cub *cub);
-
-
-//damla
-
-int check_map_components(char **map);
-int invalid_char_check(char **map);
-void check_all_map(char *file,t_cub *cub);
-char	**get_map_description(char **map);
-void texture_check(char *line, int *count);
-void check_wall_damla(char **map);
-char	**ft_arrdup(char **arr);
-
-//test
-
+//load texture
+void load_img(t_cub *cub);
+int rgb_to_hex(int r, int g, int b, int a);
 
 #endif
