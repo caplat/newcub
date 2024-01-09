@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:14:09 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 16:27:04 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/09 17:10:46 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,14 @@ static void delete_line(t_mlx *mlx, int x1, int y1,double angle)
 void draw_beam(t_mlx *mlx,int x1,int y1)
 {
     double angle;
-    static int compteur;
+    int compteur;
 
     compteur = 0;
     angle = mlx->player->angle - ((fov / 2) * (M_PI / 180));
     while(angle <= mlx->player->angle + ((fov / 2) * (M_PI / 180)))
     {
         draw_line(mlx,x1,y1,angle);
-        mlx->tab[compteur] = mlx->raycast.dist_ray * cos(abs_double(mlx->player->angle - angle));
+        mlx->tab[compteur] = mlx->raycast.dist_ray * cosf(abs_double(mlx->player->angle - angle));
         compteur++;
         angle += (fov * (M_PI / 180)/ WIDTH);
     }
