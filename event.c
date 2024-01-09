@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:59:11 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 16:12:18 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/09 16:48:43 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void event(mlx_key_data_t event,void *content)
     mlx = content;
     if(mlx_is_key_down(mlx->id, MLX_KEY_ESCAPE))
         mlx_close_window(mlx->id);
-    rotate(mlx);
 }
 
 void loop(void *param)
@@ -80,8 +79,8 @@ void loop(void *param)
     t_mlx *mlx;
 
     mlx = param;
-    // print_nb_arr(mlx->tab);
     draw_map(mlx);
+    rotate(mlx);
     update_pos_player(mlx);
     draw_screen(mlx);
 }
