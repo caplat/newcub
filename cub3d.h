@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:47:47 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 16:32:06 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:34:53 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ typedef struct s_cub
     mlx_texture_t *south_tex;
     mlx_texture_t *east_tex;
     mlx_texture_t *west_tex;
+    mlx_image_t *north_img;
+    mlx_image_t *south_img;
+    mlx_image_t *east_img;
+    mlx_image_t *west_img;
 } t_cub;
 
 typedef struct s_point
@@ -80,6 +84,8 @@ typedef struct s_ray
 {
     int x1;
     int y1;
+    int x1_final;
+    int y1_final;
     int x2;
     int y2;
     int dx;
@@ -200,5 +206,6 @@ void delete_screen(t_mlx *mlx);
 //load texture
 void load_img(t_cub *cub);
 int rgb_to_hex(int r, int g, int b, int a);
+void texture_to_image(t_mlx *mlx);
 
 #endif

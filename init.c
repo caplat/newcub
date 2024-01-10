@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:43:08 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/04 12:42:35 by derblang         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:32:32 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void init(t_cub *cub, t_player *player)
     cub->pathEast = NULL;
     cub->pathNorth = NULL;
     cub->pathWest = NULL;
-    cub->pathSouth =NULL;
+    cub->pathSouth = NULL;
     cub->south_tex = NULL;
     cub->north_tex = NULL;
     cub->west_tex = NULL;
     cub->east_tex = NULL;
+
 }

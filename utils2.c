@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:14:49 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 16:27:12 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/10 11:58:24 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,3 +91,4 @@ double abs_double(double nb)
         nb = -nb;
     return(nb);
 }
+

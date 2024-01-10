@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:58:01 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 14:08:10 by derblang         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:02:43 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void draw_screen(t_mlx *mlx)
             if(y > (HEIGHT / 2) - (wall_height / 2))
                 mlx_put_pixel(mlx->screen,x,y,rgb_to_hex(mlx->cub->floor[0], mlx->cub->floor[1], mlx->cub->floor[2], 255));
             if(y > (HEIGHT / 2) - (wall_height / 2) && y < (HEIGHT / 2) + (wall_height / 2))
+            {
                 mlx_put_pixel(mlx->screen,x,y,rgb_to_hex(1, 55, 150, 255));
+                // mlx_image_to_window(mlx->id,mlx->cub->north_img,x,y);
+            }
             y++;
         }
         x++;

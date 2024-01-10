@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:25:30 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 14:37:55 by derblang         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:58:05 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void open_window(t_mlx *mlx)
     mlx_image_to_window(mlx->id,mlx->img,0,0);
     mlx_image_to_window(mlx->id,mlx->img_ray,0,0);
     load_img(mlx->cub);
+    texture_to_image(mlx);
     mlx_key_hook(mlx->id,event,mlx);
     success = mlx_loop_hook(mlx->id,loop,mlx);
     if(!success)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: derblang <derblang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:52:53 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/09 15:33:52 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:43:30 by derblang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void free_arr(char **map)
     free(map);
 }
 
+
 int count_line(char **map)
 {
     int i;
@@ -59,7 +60,6 @@ int count_line(char **map)
         i++;
     return(i);
 }
-
 int absolute(int nb)
 {
     if(nb < 0)
