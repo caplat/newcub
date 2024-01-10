@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:43:08 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/10 13:32:32 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:46:26 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@ void init(t_cub *cub, t_player *player)
     cub->north_tex = NULL;
     cub->west_tex = NULL;
     cub->east_tex = NULL;
-
 }

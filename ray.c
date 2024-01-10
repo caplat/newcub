@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:14:09 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/10 14:40:25 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:26:40 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,21 @@ int is_wall(t_mlx *mlx, int x, int y)
     int map_y = floor(y / cellsize);
 
     if (map_x >= 0 && map_x < WIDTH && map_y >= 0 && map_y < HEIGHT)
-        return (mlx->cub->map[map_y][map_x] == '1');
-    return 1;
+    {    
+        if(mlx->cub->map[map_y][map_x] == '1')
+        {
+            mlx->wall_coord.x = x;
+            mlx->wall_coord.y = y;
+            return(1);
+        }
+    }
+    return 0;
 }
 
 static void init_ray(t_ray *ray, int x1, int y1,double angle)
 {   
     ray->x1 = x1;
     ray->y1 = y1;
-    ray->x1_final = 0;
-    ray->y1_final = 0;
     ray->x2 = x1 + rayon * cos(angle);
     ray->y2 = y1 + rayon * sin(angle);
     ray->dx = absolute(ray->x2 - x1);
@@ -51,11 +56,7 @@ static void draw_line(t_mlx *mlx, int x1, int y1, double angle)
         mlx_put_pixel(mlx->img_ray, x1, y1, R025);
         ray->dist_ray += sqrt(pow(ray->dir_x,2) + pow(ray->dir_y,2));
         if((x1 == ray->x2 && y1 == ray->y2) || is_wall(mlx,x1,y1))
-        {
-            ray->x1_final = x1;
-            ray->y1_final = y1;
             break;
-        }
         e2 = 2 * err;
         if(e2 > -ray->dy)
         {
@@ -111,9 +112,12 @@ void draw_beam(t_mlx *mlx,int x1,int y1)
     {
         draw_line(mlx,x1,y1,angle);
         mlx->tab[compteur] = mlx->raycast.dist_ray * cosf(abs_double(mlx->player->angle - angle));
+        mlx->tab_wall[compteur].x = mlx->wall_coord.x;
+        mlx->tab_wall[compteur].y = mlx->wall_coord.y;
         compteur++;
         angle += (fov * (M_PI / 180)/ WIDTH);
     }
+    find_wall_orientation(mlx,x1,y1);
 }
 
 void delete_beam(t_mlx *mlx,int x1,int y1)
@@ -126,4 +130,23 @@ void delete_beam(t_mlx *mlx,int x1,int y1)
         delete_line(mlx,x1,y1,angle);
         angle += (fov * (M_PI / 180)/ WIDTH);
     }
+}
+
+void find_wall_orientation(t_mlx *mlx,int x1,int y1)
+{
+    int i;
+
+    i = -1;
+    while(mlx->tab_wall[++i].orient)
+    {
+        if(x1 > mlx->tab_wall[i].x && (abs(x1 - mlx->tab_wall[i].x) < abs(y1 - mlx->tab_wall[i].y)))   
+           mlx->tab_wall[i].orient = 'W';
+        else if(x1 < mlx->tab_wall[i].x && (abs(x1 - mlx->tab_wall[i].x) < abs(y1 - mlx->tab_wall[i].y)))   
+           mlx->tab_wall[i].orient = 'E';
+        else if(y1 < mlx->tab_wall[i].y && (abs(x1 - mlx->tab_wall[i].x) > abs(y1 - mlx->tab_wall[i].y)))
+            mlx->tab_wall[i].orient = 'S';
+        else if(y1 > mlx->tab_wall[i].y && (abs(x1 - mlx->tab_wall[i].x) > abs(y1 - mlx->tab_wall[i].y)))
+            mlx->tab_wall[i].orient = 'N';   
+    }
+
 }

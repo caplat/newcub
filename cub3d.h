@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:47:47 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/10 14:34:53 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:28:40 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ typedef struct s_point
     int y;
 }   t_point;
 
+typedef struct s_orient
+{
+    int x;
+    int y;
+    char orient;
+}   t_orient;
+
 typedef struct s_float
 {
     float x;
@@ -84,8 +91,6 @@ typedef struct s_ray
 {
     int x1;
     int y1;
-    int x1_final;
-    int y1_final;
     int x2;
     int y2;
     int dx;
@@ -106,9 +111,9 @@ typedef struct s_mlx
     t_cub *cub;
     t_ray raycast;
     int *tab;
+    t_point wall_coord;
+    t_orient *tab_wall;
 }   t_mlx;
-
-
 
 //init
 void init(t_cub *cub, t_player *player);
@@ -191,6 +196,7 @@ double abs_double(double nb);
 void delete_beam(t_mlx *mlx,int x1,int y1);
 void draw_beam(t_mlx *mlx,int x1,int y1);
 int is_wall(t_mlx *mlx, int x, int y);
+void find_wall_orientation(t_mlx *mlx,int x1,int y1);
 
 //moveset
 void move_left(t_mlx *mlx);

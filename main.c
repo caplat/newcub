@@ -6,7 +6,7 @@
 /*   By: acaplat <acaplat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:50:31 by derblang          #+#    #+#             */
-/*   Updated: 2024/01/10 11:55:45 by acaplat          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:06:18 by acaplat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int main(int argc, char **argv)
     mlx.cub = &cub;
     mlx.player = &player;
     mlx.tab = malloc(sizeof(int) * (WIDTH));
+    mlx.tab_wall = malloc(sizeof(t_orient) * WIDTH);
     check_args(argc);
 	check_file_extension(argv[1]);
     check_all_map(argv[1], &cub);
@@ -92,5 +93,6 @@ int main(int argc, char **argv)
     open_window(&mlx);
     free_arr(cub.map);
     free(mlx.tab);
+    free(mlx.tab_wall);
     return 0;
  }
